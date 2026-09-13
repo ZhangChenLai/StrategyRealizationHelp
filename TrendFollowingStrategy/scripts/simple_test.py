@@ -4,6 +4,13 @@ MA20趋势跟踪策略 - 简单功能测试
 注意：使用的是生成数据！仅做调试使用
 """
 
+import os
+import sys
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
@@ -149,7 +156,7 @@ def test_signal_logic():
     test_data['ma5'] = test_data['close'].rolling(window=5).mean()
     
     # 测试信号生成
-    from signal_generator import SignalGenerator
+    from src.signal_generator import SignalGenerator
     generator = SignalGenerator(ma_period=5)
     signals_data = generator.generate_signals(test_data)
     

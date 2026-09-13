@@ -599,4 +599,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import time
+    start = time.perf_counter()
+    try:
+        main()
+    finally:
+        elapsed = time.perf_counter() - start
+        print(f"总耗时: {elapsed:.4f} 秒")
